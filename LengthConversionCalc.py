@@ -945,15 +945,17 @@ listMetricVolume = ['Picoliters', 'Nanoliters', 'Microliters', 'Milliliters', 'C
 listMetricMass = ['Picograms', 'Nanograms', 'Micrograms', 'Milligrams', 'Centigrams', 'Decigrams', 'Grams', 'Decagrams', 'Hectograms', 'Tonnes', 'Kiltonnes', 'Megatonnes', 'Gigatonnes', 'Teratonnes'] 
 listMetric = [listMetricLength, listMetricVolume, listMetricMass]
 
-listMetricLengthGREEN = listMetricLength.copy()
-listMetricVolumeGREEN = listMetricVolume.copy()
-listMetricMassGREEN = listMetricMass.copy()
-listMetricGREEN = [listMetricLengthGREEN, listMetricVolumeGREEN, listMetricMassGREEN]
-
 listImperialLength = ['Inches', 'Feet', 'Yards', 'Miles']
 listImperialVolume = ['Fluid Ounces', 'Pints', 'Quarts', 'Gallons']
 listImperialMass = ['Drachms', 'Ounces', 'Pounds', 'Tons']
 listImperial = [listImperialLength, listImperialVolume, listImperialMass]
+
+
+# Copy of the lists that are displayed to the user in color based on whether their implementation is complete #
+listMetricLengthGREEN = listMetricLength.copy()
+listMetricVolumeGREEN = listMetricVolume.copy()
+listMetricMassGREEN = listMetricMass.copy()
+listMetricGREEN = [listMetricLengthGREEN, listMetricVolumeGREEN, listMetricMassGREEN]
 
 listImperialLengthGREEN = listImperialLength.copy()
 listImperialVolumeGREEN = listImperialVolume.copy()
@@ -970,8 +972,7 @@ for i in range(len(listImperialLengthGREEN)):
 
 for i in range(len(listMetricLengthGREEN)):
     listMetricLengthGREEN[i] = color.GREEN + str(listMetricLengthGREEN[i] + color.END)
-
-         
+     
 ##########################################################################################
 
 ################################ MAIN PROGRAM ################################
@@ -997,9 +998,6 @@ print(', '.join(str(item) for item in listImperialMassGREEN))
 
 firstUnit = str(input("What unit are you converting from?\n"))
 
-
-
-
 if any(firstUnit in i for i in listMetric) or any(firstUnit in i for i in listImperial):
     firstUnit = firstUnit.lower()
     numToConvert = float(input("How many {} do you have?\n".format(firstUnit)))
@@ -1007,10 +1005,40 @@ if any(firstUnit in i for i in listMetric) or any(firstUnit in i for i in listIm
     if any(endUnit in sublist for sublist in listMetric) or any(endUnit in sublist for sublist in listImperial):
         endUnit = endUnit.lower()
         match firstUnit:
+            case "picometers":
+                Picometers(endUnit)
+            case "nanometers":
+                Nanometers(endUnit)
+            case "micrometers":
+                Micrometers(endUnit)
+            case "millimeters":
+                Millimeters(endUnit)
+            case "centimeters":
+                Centimeters(endUnit)
+            case "decimeters":
+                Decimeters(endUnit)
             case "meters":
                 Meters(endUnit)
+            case "decameters":
+                Decameters(endUnit)
+            case "hectometers":
+                Hectometers(endUnit)
             case "kilometers":
                 Kilometers(endUnit)
+            case "megameters":
+                Megameters(endUnit)
+            case "gigameters":
+                Gigameters(endUnit)
+            case "terameters":
+                Terameters(endUnit)
+            case "inches":
+                Inches(endUnit)
+            case "feet":
+                Feet(endUnit)
+            case "yards":
+                Yards(endUnit)
+            case "miles":
+                Miles(endUnit)
     else:
         print("End unit not in conversion list")
 else:
